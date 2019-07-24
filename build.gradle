@@ -1,0 +1,38 @@
+plugins {
+    id 'ru.endlesscode.bukkitgradle' version '0.8.2'
+    id 'java'
+}
+
+// Project information
+group "com.gmail.maelgrove.SgcraftTlg"
+description "Bukkit plugin interfacing Telegram"
+version "0.1.0"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly paperApi()
+}
+
+bukkit {
+    version = "1.14.4"
+    meta {
+        name = "SgcraftTlg"
+        description = "Bukkit plugin interfacing Telegram"
+        main = "com.gmail.maelgrove.SgcraftTlg.SgcraftPlugin"
+        version = "0.1.0"
+    }
+    run {
+        core = "paper"
+        eula = true
+        onlineMode = false
+        debug = true
+        encoding = "UTF-8"
+        javaArgs = "-Xmx1G"
+        bukkitArgs = ""
+    }
+}
