@@ -99,17 +99,17 @@ in the API documentations of the respective server forks.
 
 ### Minecraft
 
-Command | Description
-    --- | --- 
-**/tgsettoken** [TOKEN] | Sets the telegram bot token 
+| Command | Description |
+| --- | --- |
+| **/tgsettoken** [TOKEN] | Sets the telegram bot token |
 
    
 ### Telegram
 
-Command | Description
-    --- | --- 
-**/mconline** | Lists all players currently on the server
-**/mcwhereis** [PLAYER] | Returns the coordinates of the specified player (MC)
+| Command | Description |
+| --- | --- |
+| **/mconline** | Lists all players currently on the server |
+| **/mcwhereis** [PLAYER] | Returns the coordinates of the specified player (MC) |
 
 ## Roadmap
 
