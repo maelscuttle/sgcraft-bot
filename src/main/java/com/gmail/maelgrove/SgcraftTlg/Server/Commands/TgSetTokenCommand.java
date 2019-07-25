@@ -11,7 +11,6 @@ import org.bukkit.command.CommandSender;
  */
 public class TgSetTokenCommand implements CommandExecutor {
 
-
     private TelegramBot bot;
     private PluginConfig config;
 

@@ -12,6 +12,7 @@ public class PluginConfig {
     private static final String EVENT_CHAT_ID           = "event-chat-id";
     private static final String BOT_TOKEN               = "bot-token";
     private static final String ENABLE_PLAYER_EVENTS = "enable-player-events";
+    private static final String ENABLE_WORLD_EVENTS = "enable-world-events";
 
     public PluginConfig(FileConfiguration config) {
         this.config = config;
@@ -21,6 +22,7 @@ public class PluginConfig {
         config.addDefault(BOT_TOKEN, "BOT_TOKEN");
         config.addDefault(EVENT_CHAT_ID, "EVENT_CHATID");
         config.addDefault(ENABLE_PLAYER_EVENTS, true);
+        config.addDefault(ENABLE_WORLD_EVENTS, true);
         config.options().copyDefaults(true);
     }
 
@@ -37,4 +39,6 @@ public class PluginConfig {
     public boolean isPlayerEventsEnabled() {
         return config.getBoolean(ENABLE_PLAYER_EVENTS);
     }
+
+    public boolean isWorldEventsEnabled() {return config.getBoolean(ENABLE_WORLD_EVENTS);}
 }
