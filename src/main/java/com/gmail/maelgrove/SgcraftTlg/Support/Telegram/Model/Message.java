@@ -1,6 +1,8 @@
 package com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model;
 
 
+import java.util.List;
+
 /**
  * Represents a Telegram message.
  */
@@ -10,20 +12,13 @@ public class Message {
     private int date;
     private Chat chat;
     private String text;
+    private List<MessageEntity> entities;
 
     /**
      * @return The message id
      */
     public int getMessageId() {
         return message_id;
-    }
-
-
-    /**
-     * @param messageId The message id.
-     */
-    public void setMessageId(int messageId) {
-        this.message_id = messageId;
     }
 
     /**
@@ -34,24 +29,10 @@ public class Message {
     }
 
     /**
-     * @param from The user who sent the message.
-     */
-    public void setFrom(User from) {
-        this.from = from;
-    }
-
-    /**
      * @return The message date.
      */
     public int getDate() {
         return date;
-    }
-
-    /**
-     * @param date The message date.
-     */
-    public void setDate(int date) {
-        this.date = date;
     }
 
     /**
@@ -62,13 +43,6 @@ public class Message {
     }
 
     /**
-     * @param chat The chat from where the message originated.
-     */
-    public void setChat(Chat chat) {
-        this.chat = chat;
-    }
-
-    /**
      * @return The text.
      */
     public String getText() {
@@ -76,9 +50,34 @@ public class Message {
     }
 
     /**
-     * @param text The text.
+     * @return Whether the message has text.
      */
-    public void setText(String text) {
-        this.text = text;
+    public boolean hasText() {
+        return text != null && !text.isEmpty();
+    }
+
+    /**
+     * @return Whether the message represents a command.
+     */
+    public boolean isCommand() {
+        if (hasText() && entities != null) {
+            for (MessageEntity entity : entities) {
+                if (entity != null && entity.getOffset() == 0 &&
+                        MessageEntityType.BOTCOMMAND.equals(entity.getType())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return All message entities within the message.
+     */
+    public List<MessageEntity> getEntities() {
+        if (entities != null) {
+            entities.forEach(x -> x.computeText(text));
+        }
+        return entities;
     }
 }

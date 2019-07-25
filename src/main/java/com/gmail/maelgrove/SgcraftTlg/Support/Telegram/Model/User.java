@@ -18,24 +18,10 @@ public class User {
     }
 
     /**
-     * @param id The user identifier.
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
      * @return True if the user is a bot, otherwise false.
      */
     public boolean getIsBot () {
         return is_bot;
-    }
-
-    /**
-     * @param is_bot True if the user is a bot, otherwise false.
-     */
-    public void setIsBot(boolean is_bot) {
-        this.is_bot = is_bot;
     }
 
     /**
@@ -45,12 +31,6 @@ public class User {
         return first_name;
     }
 
-    /**
-     * @param firstName The first name of the user.
-     */
-    public void setFirstName(String firstName) {
-        this.first_name = firstName;
-    }
 
     /**
      * @return The last name of the user.
@@ -60,24 +40,10 @@ public class User {
     }
 
     /**
-     * @param lastName The last name of the user.
-     */
-    public void setLastName(String lastName) {
-        this.last_name = lastName;
-    }
-
-    /**
      * @return The username.
      */
     public String getUsername() {
         return username;
-    }
-
-    /**
-     * @param username The username.
-     */
-    public void setUsername(String username) {
-        this.username = username;
     }
 
 }

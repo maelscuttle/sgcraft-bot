@@ -117,9 +117,9 @@ public class TelegramBot {
                 if(update.getMessage() == null)
                     return true;
 
+                UpdateHandlerContext context = new UpdateHandlerContext(this, update);
                 for(UpdateHandler handler : updateHandlers) {
-                    if(handler.canHandleUpdate(update))
-                        handler.handleUpdate(update);
+                    handler.handleUpdate(context);
                 }
             }
         }

@@ -12,11 +12,4 @@ public class Chat {
     public Long getId() {
         return id;
     }
-
-    /**
-     * @param id The id of the chat.
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
