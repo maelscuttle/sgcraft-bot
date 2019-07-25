@@ -1,19 +1,19 @@
-package com.gmail.maelgrove.SgcraftTlg.Utils;
+package com.gmail.maelgrove.SgcraftTlg;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-@SuppressWarnings("unused")
-public class Config {
-    public static Config Default;
+/**
+ * Represents the plugin configuration.
+ */
+public class PluginConfig {
 
-    private static FileConfiguration config;
+    private FileConfiguration config;
 
-    private Config(FileConfiguration config) {
+    public PluginConfig(FileConfiguration config) {
         this.config = config;
     }
 
-    public static void initialize(FileConfiguration config) {
-        Default = new Config(config);
+    public void setDefaults() {
         config.addDefault("bottoken", "BOT_TOKEN");
         config.addDefault("chatid", "CHAT_ID");
         config.addDefault("botname", "BOT_NAME");
@@ -28,7 +28,5 @@ public class Config {
         return config.getString("bottoken");
     }
 
-    public Long getChatId() {
-        return config.getLong("chatid");
-    }
+    public Long getChatId() { return  config.getLong("chatid"); }
 }

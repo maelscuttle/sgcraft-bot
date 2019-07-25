@@ -23,7 +23,7 @@ bukkit {
     meta {
         name = "SgcraftTlg"
         description = "Bukkit plugin interfacing Telegram"
-        main = "com.gmail.maelgrove.SgcraftTlg.SgcraftPlugin"
+        main = "com.gmail.maelgrove.SgcraftTlg.PluginContext"
         version = "0.1.0"
     }
     run {
