@@ -6,7 +6,7 @@ plugins {
 // Project information
 group "com.gmail.maelgrove.SgcraftTlg"
 description "Bukkit plugin interfacing Telegram"
-version "0.1.0"
+version "0.1.0-alpha"
 
 sourceCompatibility = 1.8
 
@@ -19,12 +19,11 @@ dependencies {
 }
 
 bukkit {
-    version = "1.14.4"
     meta {
         name = "SgcraftTlg"
         description = "Bukkit plugin interfacing Telegram"
         main = "com.gmail.maelgrove.SgcraftTlg.PluginContext"
-        version = "0.1.0"
+        version = "0.1.0-alpha"
     }
     run {
         core = "paper"

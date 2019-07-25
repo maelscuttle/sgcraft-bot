@@ -1,0 +1,5 @@
+commands:
+  tgsettoken:
+    description: Sets the telegram bot token
+    usage: /<command> [token]
+    permission: telegram.settoken
