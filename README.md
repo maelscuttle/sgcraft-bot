@@ -95,13 +95,26 @@ and then in ```PluginContext.java```
 Just use the Bukkit (or PaperMC) API as described in e.g https://hub.spigotmc.org/javadocs/bukkit/overview-summary.html or
 in the API documentations of the respective server forks.
 
-### Roadmap
+## Runtime commands
 
-   - [ ] Command handler helpers
+### Minecraft
+
+Command | Description
+    --- | --- 
+**/tgsettoken** [TOKEN] | Sets the telegram bot token 
+
+   
+### Telegram
+
+Command | Description
+    --- | --- 
+**/mconline** | Lists all players currently on the server
+**/mcwhereis** [PLAYER] | Returns the coordinates of the specified player (MC)
+
+## Roadmap
+
    - [ ] Minecraft / Telegram user linking
    - [ ] Minecraft chat -> Telegram
    - [ ] Telegram chat -> Minecraft
    - [ ] Bot configuration from within minecraft
-   - [ ] Bukkit support
-   - [ ] Spigot support
    - [ ] Server-side shaders 🤷
