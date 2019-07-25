@@ -29,7 +29,24 @@ All tasks can be executed on Windows aswell using ```gradlew.bat``` instead of `
 
 ## Usage
 
-Currently, the bot features a simple API for adding Telegram update handlers and command handlers.
+Currently, the plugin features a simple API for adding Telegram update handlers and command handlers.
+
+### First use
+
+Simply drop the built ```SgcraftTlg[VERSION].jar``` into the ```/plugins``` folder of your server. At the first start, it will silently crash, as the Telegram integration first needs to be configured.
+The plugin now should have created a ```config.yml``` within ```/plugins/SgcraftTlg``` where the following settings should
+be set:
+
+    bottoken: [BOT TOKEN]
+    chatid: [TARGET CHAT FOR MESSAGES]
+    botname: [NAME OF THE BOT]
+    
+The bot token can be acquired through [@BotFather](https://telegram.me/botfather).
+
+After the config file has been updated, simply restart the server.
+
+
+
 
 ### Telegram Updates
 
