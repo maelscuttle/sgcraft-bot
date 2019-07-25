@@ -49,7 +49,7 @@ public class TelegramBot {
     /**
      * @return True if the bot is connected, otherwise false.
      */
-    public boolean getIsConnected() {
+    public boolean isConnected() {
         return isConnected;
     }
 
@@ -63,8 +63,12 @@ public class TelegramBot {
     /**
      * @return True if the bot is authenticated, otherwise false.
      */
-    public boolean getIsAuthenticated() {
+    public boolean isAuthenticated() {
         return authJson != null;
+    }
+
+    public boolean isReady() {
+        return isConnected && authJson != null;
     }
 
     public void addUpdateHandler(UpdateHandler handler) {

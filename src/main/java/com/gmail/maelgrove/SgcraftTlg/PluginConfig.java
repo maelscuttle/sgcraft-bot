@@ -9,24 +9,29 @@ public class PluginConfig {
 
     private FileConfiguration config;
 
+    private static final String EVENT_CHAT_ID           = "event-chat-id";
+    private static final String BOT_TOKEN               = "bot-token";
+    private static final String ENABLE_PLAYER_EVENTS = "enable-player-events";
+
     public PluginConfig(FileConfiguration config) {
         this.config = config;
     }
 
     public void setDefaults() {
-        config.addDefault("bottoken", "BOT_TOKEN");
-        config.addDefault("chatid", "CHAT_ID");
-        config.addDefault("botname", "BOT_NAME");
+        config.addDefault(BOT_TOKEN, "BOT_TOKEN");
+        config.addDefault(EVENT_CHAT_ID, "EVENT_CHATID");
+        config.addDefault(ENABLE_PLAYER_EVENTS, true);
         config.options().copyDefaults(true);
     }
 
-    public String getBotName() {
-        return config.getString("botname");
-    }
 
     public String getBotToken() {
-        return config.getString("bottoken");
+        return config.getString(BOT_TOKEN);
     }
 
-    public Long getChatId() { return  config.getLong("chatid"); }
+    public Long getEventChatId() { return config.getLong(EVENT_CHAT_ID); }
+
+    public boolean isPlayerEventsEnabled() {
+        return config.getBoolean(ENABLE_PLAYER_EVENTS);
+    }
 }
