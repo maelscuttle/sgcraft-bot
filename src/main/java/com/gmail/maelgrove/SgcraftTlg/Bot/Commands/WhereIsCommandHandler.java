@@ -1,8 +1,8 @@
-package com.gmail.maelgrove.SgcraftTlg.Bot;
+package com.gmail.maelgrove.SgcraftTlg.Bot.Commands;
 
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.AbstractCommandHandler;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.Command;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.UpdateHandlerContext;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.AbstractCommandHandler;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.Command;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.UpdateHandlerContext;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -17,7 +17,7 @@ public class WhereIsCommandHandler extends AbstractCommandHandler {
 
     @Override
     protected void handleCommand(Command command) {
-        if(!command.getName().equals("whereis") || command.getParameters().length < 1)
+        if(!command.getName().equals("mcwhereis") || command.getParameters().length < 1)
             return;
 
         String playerName   = command.getParameters()[0];

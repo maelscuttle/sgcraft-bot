@@ -1,7 +1,7 @@
-package com.gmail.maelgrove.SgcraftTlg.Support.Telegram;
+package com.gmail.maelgrove.SgcraftTlg.Core.Telegram;
 
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.Update;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.SendMessage;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.Update;
 
 public class UpdateHandlerContext {
 

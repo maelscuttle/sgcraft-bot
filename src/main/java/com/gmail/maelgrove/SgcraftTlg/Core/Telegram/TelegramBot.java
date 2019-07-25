@@ -1,9 +1,7 @@
-package com.gmail.maelgrove.SgcraftTlg.Support.Telegram;
+package com.gmail.maelgrove.SgcraftTlg.Core.Telegram;
 
-import com.gmail.maelgrove.SgcraftTlg.PluginContext;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.Update;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.SendMessage;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.Update;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

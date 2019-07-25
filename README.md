@@ -52,8 +52,8 @@ After the config file has been updated, simply restart the server.
 
 Adding an update handler:
 
-    import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.AbstractUpdateHandler;
-    import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.Update;
+    import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.AbstractUpdateHandler;
+    import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Models.Update;
     
     public class HelloWorldHandler extends AbstractUpdateHandler {
         @Override
@@ -71,8 +71,8 @@ and then in ```PluginContext.java```
 
 In order to handle Telegram ```/command``` commands, use the ```AbstractCommandHandler.java``` base type:
 
-    import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.Command;
-    import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.AbstractCommandHandler;
+    import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.Command;
+    import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.AbstractCommandHandler;
 
     public class HelloCommandHandler extends AbstractCommandHandler {
         @Override

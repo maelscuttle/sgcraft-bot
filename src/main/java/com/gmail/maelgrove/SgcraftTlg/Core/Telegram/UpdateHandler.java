@@ -1,4 +1,4 @@
-package com.gmail.maelgrove.SgcraftTlg.Support.Telegram;
+package com.gmail.maelgrove.SgcraftTlg.Core.Telegram;
 
 /**
  * Represents a service which handles Telegram updates.

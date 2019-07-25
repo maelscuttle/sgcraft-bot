@@ -1,6 +1,4 @@
-package com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model;
-
-import org.omg.CORBA.INTERNAL;
+package com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model;
 
 /**
  * Represents a Telegram message entity.

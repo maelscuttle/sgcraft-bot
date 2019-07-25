@@ -1,7 +1,7 @@
-package com.gmail.maelgrove.SgcraftTlg.Bot;
+package com.gmail.maelgrove.SgcraftTlg.Bot.Commands;
 
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.AbstractCommandHandler;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.Command;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.AbstractCommandHandler;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.Command;
 import org.bukkit.Bukkit;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class OnlinePlayersCommandHandler extends AbstractCommandHandler {
     @Override
     protected void handleCommand(Command command) {
-        if(!command.getName().equals("online"))
+        if(!command.getName().equals("mconline"))
             return;
         List<String> names =
                 Bukkit.getOnlinePlayers()

@@ -1,8 +1,8 @@
-package com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands;
+package com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands;
 
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.AbstractUpdateHandler;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.Message;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.Update;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.AbstractUpdateHandler;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.Message;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.Update;
 
 import java.util.Arrays;
 

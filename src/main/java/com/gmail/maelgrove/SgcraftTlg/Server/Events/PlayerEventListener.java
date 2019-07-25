@@ -2,8 +2,8 @@ package com.gmail.maelgrove.SgcraftTlg.Server.Events;
 
 import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
 import com.gmail.maelgrove.SgcraftTlg.PluginMessages;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.TelegramBot;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.SendMessage;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;

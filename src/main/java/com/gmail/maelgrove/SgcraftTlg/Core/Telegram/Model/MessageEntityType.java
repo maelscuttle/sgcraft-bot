@@ -1,4 +1,4 @@
-package com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model;
+package com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model;
 
 /**
  * Represents message entity types.

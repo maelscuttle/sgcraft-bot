@@ -1,9 +1,9 @@
 package com.gmail.maelgrove.SgcraftTlg;
 
-import com.gmail.maelgrove.SgcraftTlg.Bot.OnlinePlayersCommandHandler;
-import com.gmail.maelgrove.SgcraftTlg.Bot.WhereIsCommandHandler;
+import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.OnlinePlayersCommandHandler;
+import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.WhereIsCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.PlayerEventListener;
-import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.TelegramBot;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
