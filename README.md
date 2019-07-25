@@ -6,7 +6,7 @@ PaperMC support: **1.7** to **1.14.4**. Currently in early alpha stage!
 
 ## Contributions
 
-Feel free to fork this project, work on it and then make a pull request against **master** branch.
+Feel free to fork this project, work on it and then make a pull request against **develop** branch.
 
 Please, **DO NOT PUSH ANY TOKEN OR API KEYS**!
 
