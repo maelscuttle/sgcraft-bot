@@ -5,6 +5,7 @@ import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.WhereIsCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Server.Commands.TgSetTokenCommand;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.PlayerEventListener;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
+import com.gmail.maelgrove.SgcraftTlg.Server.Events.WeatherEventListener;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.WorldEventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +28,7 @@ public class PluginContext extends JavaPlugin {
 
         // event listeners
         Bukkit.getPluginManager().registerEvents(new PlayerEventListener(config, bot), this);
+        Bukkit.getPluginManager().registerEvents(new WeatherEventListener(config, bot), this);
         Bukkit.getPluginManager().registerEvents(new WorldEventListener(config, bot), this);
 
         // bot

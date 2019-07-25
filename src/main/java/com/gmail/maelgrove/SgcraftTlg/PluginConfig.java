@@ -13,6 +13,7 @@ public class PluginConfig {
     private static final String BOT_TOKEN               = "bot-token";
     private static final String ENABLE_PLAYER_EVENTS = "enable-player-events";
     private static final String ENABLE_WORLD_EVENTS = "enable-world-events";
+    private static final String ENABLE_WEATHER_EVENTS = "enable-weather-events";
 
     public PluginConfig(FileConfiguration config) {
         this.config = config;
@@ -23,6 +24,7 @@ public class PluginConfig {
         config.addDefault(EVENT_CHAT_ID, "EVENT_CHATID");
         config.addDefault(ENABLE_PLAYER_EVENTS, true);
         config.addDefault(ENABLE_WORLD_EVENTS, true);
+        config.addDefault(ENABLE_WEATHER_EVENTS, true);
         config.options().copyDefaults(true);
     }
 
@@ -41,4 +43,6 @@ public class PluginConfig {
     }
 
     public boolean isWorldEventsEnabled() {return config.getBoolean(ENABLE_WORLD_EVENTS);}
+
+    public boolean isWeatherEventsEnabled() { return config.getBoolean(ENABLE_WEATHER_EVENTS);}
 }
