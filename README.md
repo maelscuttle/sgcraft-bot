@@ -111,6 +111,20 @@ in the API documentations of the respective server forks.
 | **/mconline** | Lists all players currently on the server |
 | **/mcwhereis** [PLAYER] | Returns the coordinates of the specified player (MC) |
 
+## Runtime events
+
+The bot announces several events to the event channel, if configured and enabled.
+
+| Event | Flag |
+| --- | --- |
+| onJoin | enable-player-events |
+| onLeave | enable-player-events |
+| onDeath | enable-player-events |
+| onWorldLoad | enable-world-events |
+| onWorldUnload | enable-world-events |
+| onWeatherChange | enable-weather-events |
+| onLightningStrike | enable-weather-events |
+
 ## Roadmap
 
    - [ ] Minecraft / Telegram user linking
