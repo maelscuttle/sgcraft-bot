@@ -33,20 +33,23 @@ Currently, the plugin features a simple API for adding Telegram update handlers 
 
 ### First use
 
-Simply drop the built ```SgcraftTlg[VERSION].jar``` into the ```/plugins``` folder of your server. At the first start, it will silently crash, as the Telegram integration first needs to be configured.
+Simply drop the built ```SgcraftTlg[VERSION].jar``` into the ```/plugins``` folder of your server.
 The plugin now should have created a ```config.yml``` within ```/plugins/SgcraftTlg``` where the following settings should
 be set:
 
-    bottoken: [BOT TOKEN]
-    chatid: [TARGET CHAT FOR MESSAGES]
-    botname: [NAME OF THE BOT]
+    bot-token: [BOT TOKEN]
+    event-chat-id: [TARGET CHAT FOR EVENTS]
     
 The bot token can be acquired through [@BotFather](https://telegram.me/botfather).
 
 After the config file has been updated, simply restart the server.
 
+#### Configure via Minecraft
 
+Server operators can also set the bot token via Minecraft. Type in the following command
+into the console:
 
+    /tgsettoken [BOT TOKEN]
 
 ### Telegram Updates
 

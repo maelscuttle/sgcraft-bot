@@ -2,6 +2,7 @@ package com.gmail.maelgrove.SgcraftTlg;
 
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.OnlinePlayersCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.WhereIsCommandHandler;
+import com.gmail.maelgrove.SgcraftTlg.Server.Commands.TgSetTokenCommand;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.PlayerEventListener;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import org.bukkit.Bukkit;
@@ -31,11 +32,16 @@ public class PluginContext extends JavaPlugin {
         bot.addUpdateHandler(new WhereIsCommandHandler());
         bot.addUpdateHandler(new OnlinePlayersCommandHandler());
 
+        // mc commands
+        Bukkit.getPluginCommand(TgSetTokenCommand.COMMAND).setExecutor(new TgSetTokenCommand(config, bot));
+
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
-            if (!bot.isConnected())
-                bot.tryReconnect();
-            else
-                bot.tryProcessNextUpdate();
+            if(bot.hasToken()) {
+                if (!bot.isConnected())
+                    bot.tryReconnect();
+                else
+                    bot.tryProcessNextUpdate();
+            }
         }, 10L, 10L);
     }
 

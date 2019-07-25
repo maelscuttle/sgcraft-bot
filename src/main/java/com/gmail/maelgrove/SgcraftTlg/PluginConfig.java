@@ -24,6 +24,9 @@ public class PluginConfig {
         config.options().copyDefaults(true);
     }
 
+    public void setBotToken(String token) {
+        config.set(BOT_TOKEN, token);
+    }
 
     public String getBotToken() {
         return config.getString(BOT_TOKEN);

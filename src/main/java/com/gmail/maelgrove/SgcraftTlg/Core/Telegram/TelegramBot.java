@@ -59,6 +59,13 @@ public class TelegramBot {
     }
 
     /**
+     * @return True if the bot has a token set, otherwise false.
+     */
+    public boolean hasToken() {
+        return token != null && !token.isEmpty();
+    }
+
+    /**
      * @return True if the bot is authenticated, otherwise false.
      */
     public boolean isAuthenticated() {
