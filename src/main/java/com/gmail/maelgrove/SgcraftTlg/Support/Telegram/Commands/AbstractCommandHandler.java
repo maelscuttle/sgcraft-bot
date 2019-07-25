@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * Represents a base type for command handlers.
  */
-public abstract class CommandHandler extends AbstractUpdateHandler {
+public abstract class AbstractCommandHandler extends AbstractUpdateHandler {
 
     @Override
     public final void handleUpdate(Update update) {

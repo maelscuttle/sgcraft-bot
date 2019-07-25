@@ -1,5 +1,6 @@
 package com.gmail.maelgrove.SgcraftTlg.Support.Telegram;
 
+import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.SendMessage;
 import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.Update;
 
 public class UpdateHandlerContext {
@@ -18,5 +19,12 @@ public class UpdateHandlerContext {
 
     public TelegramBot getBot() {
         return bot;
+    }
+
+    public void sendMessageToChat(String message) {
+        Long chatId = update.getMessage().getChat().getId();
+        bot.sendMessage(new SendMessage()
+            .setText(message)
+            .setChatId(chatId));
     }
 }

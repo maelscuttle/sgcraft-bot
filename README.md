@@ -69,12 +69,12 @@ and then in ```PluginContext.java```
     
 ### Telegram Commands
 
-In order to handle Telegram ```/command``` commands, use the ```CommandHandler.java``` base type:
+In order to handle Telegram ```/command``` commands, use the ```AbstractCommandHandler.java``` base type:
 
     import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.Command;
-    import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.CommandHandler;
+    import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Commands.AbstractCommandHandler;
 
-    public class HelloCommandHandler extends CommandHandler {
+    public class HelloCommandHandler extends AbstractCommandHandler {
         @Override
         protected void handleCommand(Command command) {
             if(command.getName() != "hello" || command.getParameters().length != 1)

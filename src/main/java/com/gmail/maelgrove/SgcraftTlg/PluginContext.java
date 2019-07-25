@@ -1,5 +1,6 @@
 package com.gmail.maelgrove.SgcraftTlg;
 
+import com.gmail.maelgrove.SgcraftTlg.Bot.OnlinePlayersCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Bot.WhereIsCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.Model.SendMessage;
 import com.gmail.maelgrove.SgcraftTlg.Support.Telegram.TelegramBot;
@@ -34,6 +35,7 @@ public class PluginContext extends JavaPlugin implements Listener {
 
         bot = new TelegramBot();
         bot.addUpdateHandler(new WhereIsCommandHandler());
+        bot.addUpdateHandler(new OnlinePlayersCommandHandler());
         bot.tryAuthenticate(config.getBotToken());
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
