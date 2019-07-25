@@ -1,6 +1,6 @@
 package com.gmail.maelgrove.SgcraftTlg.Core.Telegram;
 
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.SendMessage;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.Update;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
