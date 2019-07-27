@@ -18,6 +18,7 @@ public class OnlinePlayersCommandHandler extends AbstractCommandHandler {
         List<String> names =
                 Bukkit.getOnlinePlayers()
                 .stream().map(player -> player.getName()).collect(Collectors.toList());
-        getContext().sendMessageToChat(String.join("\\n", names));
+        getContext().sendMessageToChat(String.format("Players online:\n%s",
+                String.join("\n", names)));
     }
 }

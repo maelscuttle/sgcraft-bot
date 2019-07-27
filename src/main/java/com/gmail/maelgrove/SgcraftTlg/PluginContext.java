@@ -2,7 +2,9 @@ package com.gmail.maelgrove.SgcraftTlg;
 
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.OnlinePlayersCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.WhereIsCommandHandler;
-import com.gmail.maelgrove.SgcraftTlg.Server.Commands.TgSetTokenCommand;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
+import com.gmail.maelgrove.SgcraftTlg.Server.Commands.ChatCommand;
+import com.gmail.maelgrove.SgcraftTlg.Server.Commands.SetTokenCommand;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.PlayerEventListener;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.WeatherEventListener;
@@ -26,18 +28,20 @@ public class PluginContext extends JavaPlugin {
         config.setDefaults();
         saveConfig();
 
+        // bot
+        bot = new TelegramBot();
+        bot.tryAuthenticate(config.getBotToken());
+        bot.addUpdateHandler(new WhereIsCommandHandler(config));
+        bot.addUpdateHandler(new OnlinePlayersCommandHandler());
+
         // event listeners
         Bukkit.getPluginManager().registerEvents(new PlayerEventListener(config, bot), this);
         Bukkit.getPluginManager().registerEvents(new WeatherEventListener(config, bot), this);
         Bukkit.getPluginManager().registerEvents(new WorldEventListener(config, bot), this);
 
-        // bot
-        bot = new TelegramBot();
-        bot.addUpdateHandler(new WhereIsCommandHandler());
-        bot.addUpdateHandler(new OnlinePlayersCommandHandler());
-
         // mc commands
-        Bukkit.getPluginCommand(TgSetTokenCommand.COMMAND).setExecutor(new TgSetTokenCommand(config, bot));
+        Bukkit.getPluginCommand(SetTokenCommand.COMMAND).setExecutor(new SetTokenCommand(config, bot));
+        Bukkit.getPluginCommand(ChatCommand.COMMAND).setExecutor(new ChatCommand(config, bot));
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
             if(bot.hasToken()) {

@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 /**
  * Represents a Minecraft command for setting the Telegram bot token.
  */
-public class TgSetTokenCommand implements CommandExecutor {
+public class SetTokenCommand implements CommandExecutor {
 
     private TelegramBot bot;
     private PluginConfig config;
@@ -24,7 +24,7 @@ public class TgSetTokenCommand implements CommandExecutor {
      */
     public static final String COMMAND = "tgsettoken";
 
-    public TgSetTokenCommand(PluginConfig config, TelegramBot bot) {
+    public SetTokenCommand(PluginConfig config, TelegramBot bot) {
         this.config = config;
         this.bot = bot;
     }

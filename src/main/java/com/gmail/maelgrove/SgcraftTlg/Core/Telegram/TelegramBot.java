@@ -33,7 +33,6 @@ public class TelegramBot {
 
     private List<UpdateHandler> updateHandlers = new ArrayList<UpdateHandler>();
 
-
     /**
      * Attempts to authenticate the bot.
      * @param token The bot token, issued by BotFather
