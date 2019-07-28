@@ -1,5 +1,6 @@
 package com.gmail.maelgrove.SgcraftTlg;
 
+import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.ChatCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.OnlinePlayersCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.WhereIsCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
@@ -33,6 +34,7 @@ public class PluginContext extends JavaPlugin {
         bot.tryAuthenticate(config.getBotToken());
         bot.addUpdateHandler(new WhereIsCommandHandler(config));
         bot.addUpdateHandler(new OnlinePlayersCommandHandler());
+        bot.addUpdateHandler(new ChatCommandHandler());
 
         // event listeners
         Bukkit.getPluginManager().registerEvents(new PlayerEventListener(config, bot), this);
@@ -56,6 +58,7 @@ public class PluginContext extends JavaPlugin {
     @Override
     public void onDisable() {
         saveConfig();
+        Bukkit.getScheduler().cancelTasks(this);
     }
 
 
