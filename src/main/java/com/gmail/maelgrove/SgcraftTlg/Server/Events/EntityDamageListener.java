@@ -45,10 +45,13 @@ public class EntityDamageListener implements Listener {
         switch (event.getCause()) {
             case FALL:
                 messageFormat = PLAYER_FALL;
+                break;
             case LAVA:
                 messageFormat = PLAYER_LAVA;
+                break;
             case SUICIDE:
                 messageFormat = PLAYER_SUICIDE;
+                break;
             case FALLING_BLOCK:
                 messageFormat = PLAYER_FALLING_BLOCK;
             default:
