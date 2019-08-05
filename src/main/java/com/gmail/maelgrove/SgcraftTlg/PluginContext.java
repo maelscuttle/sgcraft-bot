@@ -6,6 +6,7 @@ import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.WhereIsCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
 import com.gmail.maelgrove.SgcraftTlg.Server.Commands.ChatCommand;
 import com.gmail.maelgrove.SgcraftTlg.Server.Commands.SetTokenCommand;
+import com.gmail.maelgrove.SgcraftTlg.Server.Events.EntityDamageListener;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.PlayerEventListener;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.WeatherEventListener;
@@ -31,7 +32,8 @@ public class PluginContext extends JavaPlugin {
 
         // bot
         bot = new TelegramBot();
-        bot.tryAuthenticate(config.getBotToken());
+        if(config.getBotToken() != null && !config.getBotToken().isEmpty())
+            bot.tryAuthenticate(config.getBotToken());
         bot.addUpdateHandler(new WhereIsCommandHandler(config));
         bot.addUpdateHandler(new OnlinePlayersCommandHandler());
         bot.addUpdateHandler(new ChatCommandHandler());
@@ -40,6 +42,7 @@ public class PluginContext extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerEventListener(config, bot), this);
         Bukkit.getPluginManager().registerEvents(new WeatherEventListener(config, bot), this);
         Bukkit.getPluginManager().registerEvents(new WorldEventListener(config, bot), this);
+        Bukkit.getPluginManager().registerEvents(new EntityDamageListener(config, bot), this);
 
         // mc commands
         Bukkit.getPluginCommand(SetTokenCommand.COMMAND).setExecutor(new SetTokenCommand(config, bot));

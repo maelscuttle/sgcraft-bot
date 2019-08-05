@@ -14,6 +14,7 @@ public class PluginConfig {
     private static final String ENABLE_PLAYER_EVENTS    = "bot.events.enable-player-events";
     private static final String ENABLE_WORLD_EVENTS     = "bot.events.enable-world-events";
     private static final String ENABLE_WEATHER_EVENTS   = "bot.events.enable-weather-events";
+    private static final String ENABLE_DAMAGE_EVENTS    = "bot.events.enable-damage-events";
     private static final String DYNMAP_ADDRESS          = "bot.dynmap-address";
 
     public PluginConfig(FileConfiguration config) {
@@ -22,10 +23,11 @@ public class PluginConfig {
 
     public void setDefaults() {
         config.addDefault(BOT_TOKEN, "");
-        config.addDefault(EVENT_CHAT_ID, "");
+        config.addDefault(EVENT_CHAT_ID, 0);
         config.addDefault(ENABLE_PLAYER_EVENTS, true);
         config.addDefault(ENABLE_WORLD_EVENTS, true);
         config.addDefault(ENABLE_WEATHER_EVENTS, true);
+        config.addDefault(ENABLE_DAMAGE_EVENTS, true);
         config.addDefault(DYNMAP_ADDRESS, "");
         config.options().copyDefaults(true);
     }
@@ -47,6 +49,8 @@ public class PluginConfig {
     public boolean isWorldEventsEnabled() {return config.getBoolean(ENABLE_WORLD_EVENTS);}
 
     public boolean isWeatherEventsEnabled() { return config.getBoolean(ENABLE_WEATHER_EVENTS);}
+
+    public boolean isDamageEventsEnabled() { return config.getBoolean(ENABLE_DAMAGE_EVENTS); }
 
     public String getDynmapAddress() {
         return config.getString(DYNMAP_ADDRESS);
