@@ -1,7 +1,6 @@
 package com.gmail.maelgrove.SgcraftTlg.Server.Events;
 
 import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
-import com.gmail.maelgrove.SgcraftTlg.PluginMessages;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import org.bukkit.event.EventHandler;
@@ -14,6 +13,13 @@ import org.bukkit.event.player.PlayerQuitEvent;
  * Represents a listener which listens for player events.
  */
 public class PlayerEventListener implements Listener {
+
+
+    private static final String PLAYER_JOINED = "%s joined the game.";
+
+    private static final String PLAYER_LEFT = "%s left the game.";
+
+    private static final String PLAYER_DIED = "%s";
 
     private PluginConfig config;
     private TelegramBot bot;
@@ -29,7 +35,7 @@ public class PlayerEventListener implements Listener {
             return;
         bot.sendMessage(new SendMessage()
                 .setChatId(config.getEventChatId())
-                .setText(PluginMessages.formatMessage(PluginMessages.PLAYER_JOINED, e.getPlayer().getName())[0]));
+                .setText(String.format(PLAYER_JOINED, e.getPlayer().getName())));
     }
 
     @EventHandler
@@ -38,7 +44,7 @@ public class PlayerEventListener implements Listener {
             return;
         bot.sendMessage(new SendMessage()
                 .setChatId(config.getEventChatId())
-                .setText(PluginMessages.formatMessage(PluginMessages.PLAYER_DIED, e.getDeathMessage())[0]));
+                .setText(String.format(PLAYER_DIED, e.getDeathMessage())));
     }
 
     @EventHandler
@@ -47,7 +53,7 @@ public class PlayerEventListener implements Listener {
             return;
         bot.sendMessage(new SendMessage()
                 .setChatId(config.getEventChatId())
-                .setText(PluginMessages.formatMessage(PluginMessages.PLAYER_LEFT, e.getPlayer().getName())[0]));
+                .setText(String.format(PLAYER_LEFT, e.getPlayer().getName())));
     }
 
 }
