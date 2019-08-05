@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginLogger;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 
 /**
@@ -24,6 +26,9 @@ public class TelegramBot {
     private final String API_URL_GETME = "https://api.telegram.org/bot%s/getMe";
     private final String API_URL_GENERAL = "https://api.telegram.org/bot%s/%s";
     private final String API_URL_GETUPDATES = "https://api.telegram.org/bot%s/getUpdates?offset=%d";
+    private final String API_URL_DISABLE_WEBHOOK = "https://api.telegram.org/bot%s/setWebhook";
+
+    private final Logger logger = Bukkit.getLogger();
 
     private JsonObject authJson;
     private int lastUpdate;
@@ -88,8 +93,10 @@ public class TelegramBot {
             JsonObject obj = sendGet(String.format(API_URL_GETME, token));
             authJson = obj;
             isConnected = true;
+            logger.info(String.format("Successfully authenticated bot: %s", authJson.toString()));
             return true;
         } catch (Exception e) {
+            logger.warning(String.format("Failed to authenticate bot: %s", e.getMessage()));
             isConnected = false;
             return false;
         }
@@ -109,6 +116,7 @@ public class TelegramBot {
         try {
             rawUpdate = sendGet(String.format(API_URL_GETUPDATES, token, lastUpdate + 1));
         } catch (IOException e) {
+            logger.warning(String.format("Failed to process bot update: %s", e.getMessage()));
             return false;
         }
 
@@ -126,6 +134,7 @@ public class TelegramBot {
                     return true;
 
                 UpdateHandlerContext context = new UpdateHandlerContext(this, update);
+                logger.fine(String.format("Dispatching bot update '%s' to handlers.", update.getUpdateId()));
                 for(UpdateHandler handler : updateHandlers) {
                     handler.handleUpdate(context);
                 }
@@ -159,28 +168,33 @@ public class TelegramBot {
             writer.close();
             reader.close();
         } catch (Exception e) {
-            Bukkit.getLogger().info(e.getMessage());
+            logger.warning(String.format("Failed to post bot message: %s", e.getMessage()));
             tryReconnect();
         }
 
     }
 
     private JsonObject sendGet(String url) throws IOException {
-        String a = url;
-        URL url2 = new URL(a);
-        URLConnection conn = url2.openConnection();
+        try {
+            String a = url;
+            URL url2 = new URL(a);
+            URLConnection conn = url2.openConnection();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-        String all = "";
-        String inputLine;
-        while ((inputLine = br.readLine()) != null) {
-            all += inputLine;
+            String all = "";
+            String inputLine;
+            while ((inputLine = br.readLine()) != null) {
+                all += inputLine;
+            }
+
+            br.close();
+            JsonParser parser = new JsonParser();
+            return parser.parse(all).getAsJsonObject();
+        } catch (Exception e) {
+            logger.warning(String.format("Failed to post get message: %s", e.getMessage()));
+            throw e;
         }
-
-        br.close();
-        JsonParser parser = new JsonParser();
-        return parser.parse(all).getAsJsonObject();
     }
 
 }

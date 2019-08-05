@@ -13,7 +13,6 @@ import com.gmail.maelgrove.SgcraftTlg.Server.Events.WeatherEventListener;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.WorldEventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.logging.Logger;
 
 @SuppressWarnings("unused")
@@ -55,7 +54,7 @@ public class PluginContext extends JavaPlugin {
                 else
                     bot.tryProcessNextUpdate();
             }
-        }, 10L, 10L);
+        }, 10L, 50L);
     }
 
     @Override

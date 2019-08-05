@@ -21,6 +21,6 @@ public class ChatCommandHandler extends AbstractCommandHandler {
         String from = message.getFrom().getUsername();
 
         Bukkit.broadcastMessage(String.format(MESSAGE,
-                from, message.getText()));
+                from, String.join("", command.getParameters())));
     }
 }
