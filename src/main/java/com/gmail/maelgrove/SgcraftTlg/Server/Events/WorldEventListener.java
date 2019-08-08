@@ -1,8 +1,8 @@
 package com.gmail.maelgrove.SgcraftTlg.Server.Events;
 
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.request.SendMessage;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.world.PortalCreateEvent;
@@ -28,37 +28,35 @@ public class WorldEventListener implements Listener {
 
     @EventHandler
     public void onWorldLoaded(WorldLoadEvent e) {
-        if (!bot.isReady() || !config.isWorldEventsEnabled())
+        if (!config.isWorldEventsEnabled())
             return;
 
         String worldName = e.getWorld().getName();
-        bot.sendMessage(new SendMessage()
-                .setChatId(config.getEventChatId())
-                .setText(String.format("The world '%s' has been loaded.", worldName)));
+
+        SendMessage sendMessage = new SendMessage(config.getEventChatId(), String.format("The world '%s' has been loaded.", worldName));
+        bot.execute(sendMessage);
     }
 
     @EventHandler
     public void onWorldUnloaded(WorldUnloadEvent e) {
-        if (!bot.isReady() || !config.isWorldEventsEnabled())
+        if (!config.isWorldEventsEnabled())
             return;
 
         String worldName = e.getWorld().getName();
-        bot.sendMessage(new SendMessage()
-                .setChatId(config.getEventChatId())
-                .setText(String.format("The world '%s' has been unloaded.", worldName)));
 
+        SendMessage sendMessage = new SendMessage(config.getEventChatId(), String.format("The world '%s' has been unloaded.", worldName));
+        bot.execute(sendMessage);
     }
 
     @EventHandler
     public void onPortalCreated(PortalCreateEvent e) {
-        if (!bot.isReady() || !config.isWorldEventsEnabled())
+        if (!config.isWorldEventsEnabled())
             return;
 
         PortalCreateEvent.CreateReason reason = e.getReason();
         if(reason == PortalCreateEvent.CreateReason.FIRE) {
-            bot.sendMessage(new SendMessage()
-                    .setChatId(config.getEventChatId())
-                    .setText(String.format("Portal has been created. Off to the Nether!")));
+            SendMessage sendMessage = new SendMessage(config.getEventChatId(), "Portal has been created. Off to the Nether!");
+            bot.execute(sendMessage);
         }
     }
 

@@ -1,8 +1,8 @@
 package com.gmail.maelgrove.SgcraftTlg.Server.Events;
 
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.request.SendMessage;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,7 +34,7 @@ public class EntityDamageListener implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
 
-        if (!bot.isReady() || !config.isDamageEventsEnabled())
+        if (!config.isDamageEventsEnabled())
             return;
 
         Entity entity = event.getEntity();
@@ -59,9 +59,9 @@ public class EntityDamageListener implements Listener {
         }
 
         String message = String.format(messageFormat, entity.getName());
-        bot.sendMessage(new SendMessage()
-                .setChatId(config.getEventChatId())
-                .setText(message));
+
+        SendMessage sendMessage = new SendMessage(config.getEventChatId(), message);
+        bot.execute(sendMessage);
     }
 
 }

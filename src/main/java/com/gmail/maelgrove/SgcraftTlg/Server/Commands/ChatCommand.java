@@ -1,8 +1,8 @@
 package com.gmail.maelgrove.SgcraftTlg.Server.Commands;
 
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.request.SendMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -44,9 +44,11 @@ public class ChatCommand implements CommandExecutor {
 
         String message = String.join(" ", args);
 
-        bot.sendMessage(new SendMessage()
-            .setChatId(config.getEventChatId())
-            .setText(String.format("%1$s: %2$s", sender.getName(), message)));
+        SendMessage sendMessage = new SendMessage(config.getEventChatId(),
+                String.format("%1$s: %2$s", sender.getName(), message));
+
+        bot.execute(sendMessage);
+
         return true;
     }
 }

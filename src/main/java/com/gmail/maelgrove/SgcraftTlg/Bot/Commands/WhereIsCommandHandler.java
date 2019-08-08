@@ -13,7 +13,6 @@ import org.bukkit.entity.Player;
  */
 public class WhereIsCommandHandler extends AbstractCommandHandler {
 
-    private static final String HACKY_DYNMAP_ADDRESS = "";
     private static final String PLAYER_NOT_ONLINE = "Player %s is not online.";
     private static final String DYNMAP_LINK = "%1$s/?zoom=5&x=%2$s&y=%3$s&z=%4$s";
     private static final String PLAYER_COORDINATES = "Player %1$s is at %2$s/%3$s/%4$s (x/y/z)\n%5$s";

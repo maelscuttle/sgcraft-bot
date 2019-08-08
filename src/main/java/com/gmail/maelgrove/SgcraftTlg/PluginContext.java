@@ -3,14 +3,13 @@ package com.gmail.maelgrove.SgcraftTlg;
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.ChatCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.OnlinePlayersCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Bot.Commands.WhereIsCommandHandler;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
+import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.UpdateDispatcher;
 import com.gmail.maelgrove.SgcraftTlg.Server.Commands.ChatCommand;
-import com.gmail.maelgrove.SgcraftTlg.Server.Commands.SetTokenCommand;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.EntityDamageListener;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.PlayerEventListener;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.WeatherEventListener;
 import com.gmail.maelgrove.SgcraftTlg.Server.Events.WorldEventListener;
+import com.pengrad.telegrambot.TelegramBot;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
@@ -24,18 +23,18 @@ public class PluginContext extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         // configuration
         config = new PluginConfig(getConfig());
         config.setDefaults();
         saveConfig();
 
         // bot
-        bot = new TelegramBot();
-        if(config.getBotToken() != null && !config.getBotToken().isEmpty())
-            bot.tryAuthenticate(config.getBotToken());
-        bot.addUpdateHandler(new WhereIsCommandHandler(config));
-        bot.addUpdateHandler(new OnlinePlayersCommandHandler());
-        bot.addUpdateHandler(new ChatCommandHandler());
+        bot = new TelegramBot(config.getBotToken());
+        UpdateDispatcher dispatcher = new UpdateDispatcher(bot);
+        dispatcher.addUpdateHandler(new ChatCommandHandler());
+        dispatcher.addUpdateHandler(new OnlinePlayersCommandHandler());
+        dispatcher.addUpdateHandler(new WhereIsCommandHandler(config));
 
         // event listeners
         Bukkit.getPluginManager().registerEvents(new PlayerEventListener(config, bot), this);
@@ -44,17 +43,7 @@ public class PluginContext extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EntityDamageListener(config, bot), this);
 
         // mc commands
-        Bukkit.getPluginCommand(SetTokenCommand.COMMAND).setExecutor(new SetTokenCommand(config, bot));
         Bukkit.getPluginCommand(ChatCommand.COMMAND).setExecutor(new ChatCommand(config, bot));
-
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
-            if(bot.hasToken()) {
-                if (!bot.isConnected())
-                    bot.tryReconnect();
-                else
-                    bot.tryProcessNextUpdate();
-            }
-        }, 10L, 50L);
     }
 
     @Override

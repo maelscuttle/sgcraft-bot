@@ -1,8 +1,8 @@
 package com.gmail.maelgrove.SgcraftTlg.Server.Events;
 
 import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.request.SendMessage;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -31,29 +31,29 @@ public class PlayerEventListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (!bot.isReady() || !config.isPlayerEventsEnabled())
+        if (!config.isPlayerEventsEnabled())
             return;
-        bot.sendMessage(new SendMessage()
-                .setChatId(config.getEventChatId())
-                .setText(String.format(PLAYER_JOINED, e.getPlayer().getName())));
+
+        SendMessage sendMessage = new SendMessage(config.getEventChatId(), String.format(PLAYER_JOINED, e.getPlayer().getName()));
+        bot.execute(sendMessage);
     }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
-        if (!bot.isReady() || !config.isPlayerEventsEnabled())
+        if (!config.isPlayerEventsEnabled())
             return;
-        bot.sendMessage(new SendMessage()
-                .setChatId(config.getEventChatId())
-                .setText(String.format(PLAYER_DIED, e.getDeathMessage())));
+
+        SendMessage sendMessage = new SendMessage(config.getEventChatId(), String.format(PLAYER_DIED, e.getDeathMessage()));
+        bot.execute(sendMessage);
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        if (!bot.isReady() || !config.isPlayerEventsEnabled())
+        if (!config.isPlayerEventsEnabled())
             return;
-        bot.sendMessage(new SendMessage()
-                .setChatId(config.getEventChatId())
-                .setText(String.format(PLAYER_LEFT, e.getPlayer().getName())));
+
+        SendMessage sendMessage = new SendMessage(config.getEventChatId(), String.format(PLAYER_LEFT, e.getPlayer().getName()));
+        bot.execute(sendMessage);
     }
 
 }

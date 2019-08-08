@@ -2,7 +2,7 @@ package com.gmail.maelgrove.SgcraftTlg.Bot.Commands;
 
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.AbstractCommandHandler;
 import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.Command;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.Message;
+import com.pengrad.telegrambot.model.Message;
 import org.bukkit.Bukkit;
 
 /**
@@ -17,8 +17,8 @@ public class ChatCommandHandler extends AbstractCommandHandler {
         if(!command.getName().equals("mcchat"))
             return;
 
-        Message message = command.getUpdate().getMessage();
-        String from = message.getFrom().getUsername();
+        Message message = command.getUpdate().message();
+        String from = message.from().username();
 
         Bukkit.broadcastMessage(String.format(MESSAGE,
                 from, String.join("", command.getParameters())));

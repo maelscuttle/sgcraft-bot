@@ -1,8 +1,8 @@
 package com.gmail.maelgrove.SgcraftTlg.Server.Events;
 
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.TelegramBot;
 import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.request.SendMessage;
 import org.bukkit.entity.LightningStrike;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,26 +28,24 @@ public class WeatherEventListener implements Listener {
 
     @EventHandler
     public void onWeatherChange(WeatherChangeEvent e) {
-        if (!bot.isReady() || !config.isWeatherEventsEnabled())
+        if (!config.isWeatherEventsEnabled())
             return;
 
         if(e.toWeatherState()){
-            bot.sendMessage(new SendMessage()
-                .setChatId(config.getEventChatId())
-                .setText("It started raining!"));
+            SendMessage sendMessage = new SendMessage(config.getEventChatId(), "It started raining.");
+            bot.execute(sendMessage);
         }
     }
 
     @EventHandler
     public void onLightingStrike(LightningStrikeEvent e) {
-        if (!bot.isReady() || !config.isWeatherEventsEnabled())
+        if (!config.isWeatherEventsEnabled())
             return;
 
         LightningStrike strike = e.getLightning();
         if(!strike.isEffect()) {
-            bot.sendMessage(new SendMessage()
-                    .setChatId(config.getEventChatId())
-                    .setText("A lightning struck somewhere!"));
+            SendMessage sendMessage = new SendMessage(config.getEventChatId(), "A lightning struck somewhere!");
+            bot.execute(sendMessage);
         }
     }
 

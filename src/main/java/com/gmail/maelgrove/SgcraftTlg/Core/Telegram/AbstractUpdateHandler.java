@@ -1,7 +1,6 @@
 package com.gmail.maelgrove.SgcraftTlg.Core.Telegram;
 
-
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.Update;
+import com.pengrad.telegrambot.model.Update;
 import org.bukkit.Bukkit;
 
 import java.util.logging.Logger;

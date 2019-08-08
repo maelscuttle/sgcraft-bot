@@ -1,4 +1,7 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
 plugins {
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
     id 'ru.endlesscode.bukkitgradle' version '0.8.2'
     id 'java'
 }
@@ -15,7 +18,10 @@ repositories {
 }
 
 dependencies {
+    //noinspection GroovyAssignabilityCheck
     compileOnly paperApi()
+
+    compile 'com.github.pengrad:java-telegram-bot-api:4.4.0'
 }
 
 bukkit {
@@ -35,3 +41,9 @@ bukkit {
         bukkitArgs = ""
     }
 }
+
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+}
+
+tasks.shadowJar.dependsOn tasks.relocateShadowJar

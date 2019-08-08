@@ -1,7 +1,8 @@
 package com.gmail.maelgrove.SgcraftTlg.Core.Telegram;
 
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Methods.SendMessage;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Model.Update;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.model.Update;
+import com.pengrad.telegrambot.request.SendMessage;
 
 /**
  * Represents the context of the current bot update handler.
@@ -39,19 +40,21 @@ public class UpdateHandlerContext {
      * @param message The message to reply with.
      */
     public void reply(String message) {
-        int messageId = update.getMessage().getMessageId();
-        bot.sendMessage(new SendMessage()
-        .setText(message)
-        .setReplyToMessageId(messageId));
+        int messageId   = update.message().messageId();
+        Long chatId     = update.message().chat().id();
+
+        SendMessage request = new SendMessage(chatId, message)
+                .replyToMessageId(messageId);
+        bot.execute(request);
     }
 
     /**
      * @param message Sends a message to the chat this message came from.
      */
     public void sendMessageToChat(String message) {
-        Long chatId = update.getMessage().getChat().getId();
-        bot.sendMessage(new SendMessage()
-            .setText(message)
-            .setChatId(chatId));
+        Long chatId     = update.message().chat().id();
+
+        SendMessage request = new SendMessage(chatId, message);
+        bot.execute(request);
     }
 }

@@ -1,8 +1,4 @@
 commands:
-  tgsettoken:
-    description: Sets the telegram bot token
-    usage: /<command> [token]
-    permission: telegram.settoken
   tgchat:
     description: Sends a message to the bot chat
     usage: /<command> [message]
