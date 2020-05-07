@@ -1,4 +1,4 @@
-package com.gmail.maelgrove.SgcraftTlg.Core.Telegram;
+package com.maelscuttle.sgcraftbot.Core.Telegram;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;

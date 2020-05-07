@@ -1,6 +1,6 @@
-package com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands;
+package com.maelscuttle.sgcraftbot.Core.Telegram.Commands;
 
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.AbstractUpdateHandler;
+import com.maelscuttle.sgcraftbot.Core.Telegram.AbstractUpdateHandler;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.MessageEntity;
 import com.pengrad.telegrambot.model.Update;

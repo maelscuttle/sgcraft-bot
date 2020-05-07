@@ -1,4 +1,4 @@
-package com.gmail.maelgrove.SgcraftTlg;
+package com.maelscuttle.sgcraftbot;
 
 import org.bukkit.configuration.file.FileConfiguration;
 

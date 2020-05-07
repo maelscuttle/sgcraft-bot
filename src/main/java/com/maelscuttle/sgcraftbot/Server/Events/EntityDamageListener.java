@@ -1,6 +1,6 @@
-package com.gmail.maelgrove.SgcraftTlg.Server.Events;
+package com.maelscuttle.sgcraftbot.Server.Events;
 
-import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
+import com.maelscuttle.sgcraftbot.PluginConfig;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.bukkit.entity.Entity;
@@ -22,6 +22,12 @@ public class EntityDamageListener implements Listener {
     private static final String PLAYER_FALLING_BLOCK = "%s: Oof ouch owie my head.";
 
     private static final String PLAYER_FALL = "%s thought they could fly.";
+
+    private static final String PLAYER_BLOCK_EXPLOSION = "%s nearly exploded himself.";
+
+    private static final String PLAYER_FLY_INTO_WALL = "%s hugged a wall.";
+
+    private static final String PLAYER_LIGHTNING = "%s managed to get struck by a lightning.";
 
     private PluginConfig config;
     private TelegramBot bot;
@@ -54,6 +60,12 @@ public class EntityDamageListener implements Listener {
                 break;
             case FALLING_BLOCK:
                 messageFormat = PLAYER_FALLING_BLOCK;
+            case BLOCK_EXPLOSION:
+                messageFormat = PLAYER_BLOCK_EXPLOSION;
+            case FLY_INTO_WALL:
+                messageFormat = PLAYER_FLY_INTO_WALL;
+            case LIGHTNING:
+                messageFormat = PLAYER_LIGHTNING;
             default:
                 break;
         }

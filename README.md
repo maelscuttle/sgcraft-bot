@@ -1,4 +1,4 @@
-# SgcraftTlg
+# sgcraftbot
 
 *bukkitgradle*-based PaperMC plugin which connects Telgram with Minecraft.
 
@@ -33,8 +33,8 @@ Currently, the plugin features a simple API for adding Telegram update handlers 
 
 ### First use
 
-Simply drop the built ```SgcraftTlg[VERSION].jar``` into the ```/plugins``` folder of your server.
-The plugin now should have created a ```config.yml``` within ```/plugins/SgcraftTlg``` where the following settings should
+Simply drop the built ```sgcraftbot[VERSION].jar``` into the ```/plugins``` folder of your server.
+The plugin now should have created a ```config.yml``` within ```/plugins/sgcraftbot``` where the following settings should
 be set:
 
     bot-token: [BOT TOKEN]
@@ -55,8 +55,8 @@ into the console:
 
 Adding an update handler:
 
-    import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.AbstractUpdateHandler;
-    import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Models.Update;
+    import AbstractUpdateHandler;
+    import com.maelscuttle.sgcraftbot.Core.Telegram.Models.Update;
     
     public class HelloWorldHandler extends AbstractUpdateHandler {
         @Override
@@ -74,8 +74,8 @@ and then in ```PluginContext.java```
 
 In order to handle Telegram ```/command``` commands, use the ```AbstractCommandHandler.java``` base type:
 
-    import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.Command;
-    import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.AbstractCommandHandler;
+    import Command;
+    import AbstractCommandHandler;
 
     public class HelloCommandHandler extends AbstractCommandHandler {
         @Override

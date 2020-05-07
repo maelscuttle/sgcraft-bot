@@ -1,6 +1,6 @@
-package com.gmail.maelgrove.SgcraftTlg.Server.Events;
+package com.maelscuttle.sgcraftbot.Server.Events;
 
-import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
+import com.maelscuttle.sgcraftbot.PluginConfig;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.bukkit.entity.LightningStrike;

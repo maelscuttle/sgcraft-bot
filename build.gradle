@@ -1,13 +1,13 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
     id 'ru.endlesscode.bukkitgradle' version '0.8.2'
     id 'java'
 }
 
 // Project information
-group "com.gmail.maelgrove.SgcraftTlg"
+group "com.maelscuttle.sgcraftbot"
 description "Bukkit plugin interfacing Telegram"
 version "0.1.0-alpha"
 
@@ -15,24 +15,25 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    spigot()
 }
 
 dependencies {
     //noinspection GroovyAssignabilityCheck
-    compileOnly paperApi()
+    compileOnly spigot()
 
     compile 'com.github.pengrad:java-telegram-bot-api:4.4.0'
 }
 
 bukkit {
     meta {
-        name = "SgcraftTlg"
+        name = "sgcraftbot"
         description = "Bukkit plugin interfacing Telegram"
-        main = "com.gmail.maelgrove.SgcraftTlg.PluginContext"
+        main = "com.maelscuttle.sgcraftbot.PluginContext"
         version = "0.1.0-alpha"
     }
     run {
-        core = "paper"
+        core = "spigot"
         eula = true
         onlineMode = false
         debug = true

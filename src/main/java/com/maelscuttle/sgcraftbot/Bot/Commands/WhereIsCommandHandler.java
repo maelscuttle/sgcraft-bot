@@ -1,9 +1,9 @@
-package com.gmail.maelgrove.SgcraftTlg.Bot.Commands;
+package com.maelscuttle.sgcraftbot.Bot.Commands;
 
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.AbstractCommandHandler;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.Commands.Command;
-import com.gmail.maelgrove.SgcraftTlg.Core.Telegram.UpdateHandlerContext;
-import com.gmail.maelgrove.SgcraftTlg.PluginConfig;
+import com.maelscuttle.sgcraftbot.Core.Telegram.Commands.AbstractCommandHandler;
+import com.maelscuttle.sgcraftbot.Core.Telegram.Commands.Command;
+import com.maelscuttle.sgcraftbot.Core.Telegram.UpdateHandlerContext;
+import com.maelscuttle.sgcraftbot.PluginConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
