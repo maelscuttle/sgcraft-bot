@@ -18,8 +18,12 @@ public class PluginContext extends JavaPlugin {
     private TelegramBot bot;
     private Logger logger;
 
+    public static Logger Logger;
+
     @Override
     public void onEnable() {
+
+        Logger = getLogger();
 
         // configuration
         config = new PluginConfig(getConfig());
@@ -32,6 +36,7 @@ public class PluginContext extends JavaPlugin {
         dispatcher.addUpdateHandler(new ChatCommandHandler());
         dispatcher.addUpdateHandler(new OnlinePlayersCommandHandler());
         dispatcher.addUpdateHandler(new WhereIsCommandHandler(config));
+        dispatcher.start();
 
         // event listeners
         Bukkit.getPluginManager().registerEvents(new PlayerEventListener(config, bot), this);

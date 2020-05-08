@@ -22,7 +22,7 @@ dependencies {
     //noinspection GroovyAssignabilityCheck
     compileOnly spigot()
 
-    compile 'com.github.pengrad:java-telegram-bot-api:4.4.0'
+    compile 'com.github.pengrad:java-telegram-bot-api:4.8.0'
 }
 
 bukkit {

@@ -1,8 +1,10 @@
 package com.maelscuttle.sgcraftbot.Core.Telegram;
 
+import com.maelscuttle.sgcraftbot.PluginContext;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 /**
  * Represents the updates listener responsible for dispatching updates.
  */
-public class UpdateDispatcher implements UpdatesListener {
+public class UpdateDispatcher {
 
     private TelegramBot bot;
     private List<UpdateHandler> updateHandlers = new ArrayList<UpdateHandler>();
@@ -23,15 +25,23 @@ public class UpdateDispatcher implements UpdatesListener {
         this.bot = bot;
     }
 
-    @Override
-    public int process(List<Update> updates) {
-       for(Update update : updates) {
-           UpdateHandlerContext context = new UpdateHandlerContext(bot, update);
-           for(UpdateHandler handler : updateHandlers) {
-               handler.handleUpdate(context);
-           }
-       }
+    public void start() {
+        bot.setUpdatesListener(updates -> {
+            for(Update update : updates) {
+               try {
+                   UpdateHandlerContext context = new UpdateHandlerContext(bot, update);
+                   for(UpdateHandler handler : updateHandlers) {
+                       handler.handleUpdate(context);
+                   }
+               } catch(Exception exception) {
+                   // ignore
+                }
+            }
+            return UpdatesListener.CONFIRMED_UPDATES_ALL;
+        });
+    }
 
-       return UpdatesListener.CONFIRMED_UPDATES_ALL;
+    public void stop() {
+        bot.removeGetUpdatesListener();
     }
 }
